@@ -7,7 +7,7 @@ const pages = [
   { name: "Home", icon: <Icon icon="material-symbols:home-rounded" />, path: "/" },
   { name: "Trending", icon: <Icon icon="material-symbols:trending-up-rounded" />, path: "/trending" },
   { name: "Movies", icon: <Icon icon="material-symbols:movie-rounded" />, path: "/movies" },
-  { name: "TV Shows", icon: <Icon icon="material-symbols:tv-gen-rounded" />, path: "/series" },
+  { name: "TV Shows", icon: <Icon icon="material-symbols:tv-gen-rounded" />, path: "/tv-shows" },
 ]
 
 export const Navbar = () => {

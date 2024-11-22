@@ -17,37 +17,37 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
   const with_genres = searchParams.get("genres")
 
   const media = with_genres ? (
-    await tmdb.discover.movie({ page, with_genres })
+    await tmdb.discover.tvShow({ page, with_genres })
   ) : (
-    await tmdb.discover.movie({ page })
+    await tmdb.discover.tvShow({ page })
   )
-  const { genres } = await tmdb.genres.movies()
+  const { genres } = await tmdb.genres.tvShows()
 
   return { media, genres }
 }
 
-export default function MoviesPage() {
+export default function TVShowsPage() {
   const { media: { results, total_pages }, genres } = useLoaderData<typeof loader>()
 
   return (
     <>
       <Header
-        title="Movies"
-        description="Discover new favorites from a huge selection of movies"
+        title="TV Shows"
+        description="Discover new favorites from a huge selection of TV shows"
       />
       <Separator className="max-w-4xl" />
       <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">
         <GenreFilter items={genres} />
         <LoadingWrapper>
           {results.length > 0 ? (
-            <CardGrid items={results} mediaType="movie" />
+            <CardGrid items={results} mediaType="tv" />
           ) : (
             <div className="relative flex-1 flex justify-center items-center gap-4">
               <Icon
                 icon="material-symbols:sentiment-sad-rounded"
                 className="-z-10 absolute text-9xl text-muted"
               />
-              <p>There isn&apos;t any movie to display</p>
+              <p>There isn&apos;t any TV show to display</p>
             </div>
           )}
         </LoadingWrapper>

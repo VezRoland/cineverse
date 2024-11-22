@@ -4,13 +4,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useNavigation,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { Navbar } from "./components/navbar";
-import { Loader2 } from "lucide-react";
+import { LoadingWrapper } from "./components/loading-wrapper";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,8 +25,6 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const navigation = useNavigation()
-
   return (
     <html className="min-h-screen dark" lang="en">
       <head>
@@ -38,15 +35,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="h-full min-h-screen flex flex-col">
         <Navbar />
-        { navigation.state === "loading" ? (
-          <main className="flex-1 grid place-items-center gap-8 p-8">
-            <Loader2 className="animate-spin" size="72px" />
-          </main>
-        ) : (
+        <LoadingWrapper strict={false}>
           <div className="flex-1 flex flex-col items-center gap-8 p-8">
             {children}
           </div>
-        )}
+        </LoadingWrapper>
         <ScrollRestoration />
         <Scripts />
       </body>
