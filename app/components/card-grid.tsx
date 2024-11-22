@@ -1,27 +1,24 @@
-import clsx from "clsx"
-
-import { Movie as M, TV as T, Person as P, MediaType } from "tmdb-ts"
+import { Movie, TV, Person, MediaType } from "tmdb-ts"
 
 import { MediaCard } from "~/components/media-card"
 
-interface Movie extends M { media_type: MediaType }
-interface TV extends T { media_type: MediaType }
-interface Person extends P { media_type: MediaType }
+interface ExtendedMovie extends Movie { media_type?: MediaType }
+interface ExtendedTV extends TV { media_type?: MediaType }
+interface ExtendedPerson extends Person { media_type?: MediaType }
 
 export const CardGrid = ({
   items,
-  className = ""
+  mediaType
 }: {
-  items: (Movie | TV | Person)[],
-  className?: string
+  items: (ExtendedMovie | ExtendedTV | ExtendedPerson)[],
+  mediaType?: MediaType
 }) => {
+
+
   return (
-    <section className={clsx(
-      className,
-      "grid grid-cols-[repeat(auto-fit,minmax(156px,1fr))] auto-rows-fr gap-4"
-    )}>
+    <section className="w-full grid grid-cols-[repeat(auto-fit,minmax(theme(width.44),1fr))] auto-rows-fr gap-4">
       {items.map(item => (
-        item.media_type === "movie" ? (
+        [item.media_type, mediaType].includes("movie") ? (
           <MediaCard 
             key={item.id} 
             id={item.id}
@@ -30,7 +27,7 @@ export const CardGrid = ({
             baseUrl="/movies"
           />
         ) :
-        item.media_type === "tv" ? (
+        [item.media_type, mediaType].includes("tv") ? (
           <MediaCard
             key={item.id}
             id={item.id}

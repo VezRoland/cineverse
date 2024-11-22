@@ -36,16 +36,16 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="h-full">
+      <body className="h-full min-h-screen flex flex-col">
         <Navbar />
         { navigation.state === "loading" ? (
-          <main className="h-full grid place-items-center">
+          <main className="flex-1 grid place-items-center gap-8 p-8">
             <Loader2 className="animate-spin" size="72px" />
           </main>
         ) : (
-          <>
+          <div className="flex-1 flex flex-col items-center gap-8 p-8">
             {children}
-          </>
+          </div>
         )}
         <ScrollRestoration />
         <Scripts />

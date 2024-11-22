@@ -9,6 +9,8 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <h1>Cineverse</h1>
+    <main className="h-full">
+      <h1>Cineverse</h1>
+    </main>
   )
 }

@@ -3,26 +3,32 @@ import { useLoaderData } from "@remix-run/react"
 
 import { LoaderFunctionArgs } from "@remix-run/node"
 
+import { Header } from "~/components/header"
 import { CardGrid } from "~/components/card-grid"
+import { Paginator } from "~/components/paginator"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url)
   const page = parseInt(searchParams.get("page") || "1")
 
-  const data = await tmdb.trending.trending("all", "day", { page })
+  const media = await tmdb.trending.trending("all", "day", { page })
 
-  return data
+  return media
 }
 
 export default function TrendingPage() {
-  const data = useLoaderData<typeof loader>()
+  const media = useLoaderData<typeof loader>()
 
   return (
-    <main>
-      <CardGrid
-        className="max-w-4xl p-8 m-auto"
-        items={data.results} 
+    <>
+      <Header
+        title="Trending"
+        description="Discover what's trending in movies and TV shows today, all in one place."
       />
-    </main>
+      <main className="w-full max-w-4xl flex-1">
+        <CardGrid items={media.results} />
+      </main>
+      <Paginator totalPages={media.total_pages} />
+    </>
   )
 }
