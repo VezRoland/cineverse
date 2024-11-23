@@ -37,7 +37,12 @@ export const CardGrid = ({
             baseUrl="/series"
           />
         ) : null
-      ))}
+      ))} 
+      {items.length < 4 ? (
+        new Array(4 - items.length).fill(null).map(() => (
+          <div key={crypto.randomUUID()}></div>
+        ))
+      ) : null}
     </section>
   )
 }

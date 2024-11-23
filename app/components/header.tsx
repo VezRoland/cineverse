@@ -15,7 +15,7 @@ export const Header = ({
 }) => {
   return (
     <header className={clsx(
-      "w-full max-w-4xl",
+      "w-full",
       className
     )}>
       {

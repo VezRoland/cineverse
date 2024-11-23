@@ -39,7 +39,7 @@ export default function MoviesPage() {
         breadcrumbRoutes={[[ "Home", "/" ], [ "Movies", "" ]]}
       />
       <Separator className="max-w-4xl" />
-      <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">
+      <main className="w-full flex-1 flex flex-col gap-8">
         <GenreFilter items={genres} />
         <LoadingWrapper>
           {results.length > 0 ? (

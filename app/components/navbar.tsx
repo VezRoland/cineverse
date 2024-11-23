@@ -12,7 +12,6 @@ const pages = [
   { name: "Trending", icon: <Icon icon="material-symbols:trending-up-rounded" />, path: "/trending" },
   { name: "Movies", icon: <Icon icon="material-symbols:movie-rounded" />, path: "/movies" },
   { name: "TV Shows", icon: <Icon icon="material-symbols:tv-gen-rounded" />, path: "/tv-shows" },
-  { name: "Search", icon: <Icon icon="material-symbols:tv-gen-rounded" />, path: "/search" },
 ]
 
 export const Navbar = () => {

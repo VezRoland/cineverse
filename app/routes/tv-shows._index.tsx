@@ -36,8 +36,8 @@ export default function TVShowsPage() {
         description="Discover new favorites from a huge selection of TV shows"
         breadcrumbRoutes={[[ "Home", "/" ], [ "TV Shows", "" ]]}
       />
-      <Separator className="max-w-4xl" />
-      <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">
+      <Separator />
+      <main className="w-full flex-1 flex flex-col gap-8">
         <GenreFilter items={genres} />
         <LoadingWrapper>
           {results.length > 0 ? (

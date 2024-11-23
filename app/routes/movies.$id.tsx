@@ -40,7 +40,7 @@ export default function MoviePage() {
         title={movie.title}
         breadcrumbRoutes={[[ "Home", "/" ], [ "Movies", "/movies" ], [ movie.title, "" ]]}
       />
-      <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">
+      <main className="w-full flex-1 flex flex-col gap-8">
         <Card className="relative bg-transparent bg-gradient-to-b from-background to-transparent">
           <CardHeader>
             <CardTitle>

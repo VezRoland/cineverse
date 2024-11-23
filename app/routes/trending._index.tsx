@@ -27,7 +27,7 @@ export default function TrendingPage() {
         description="Discover what's trending in movies and TV shows today, all in one place."
         breadcrumbRoutes={[[ "Home", "/" ], [ "Trending", "" ]]}
       />
-      <main className="w-full max-w-4xl flex-1 flex">
+      <main className="w-full flex-1 flex">
         <LoadingWrapper>
           <CardGrid items={media.results} />
         </LoadingWrapper>
