@@ -25,6 +25,7 @@ export default function TrendingPage() {
       <Header
         title="Trending"
         description="Discover what's trending in movies and TV shows today, all in one place."
+        breadcrumbRoutes={[[ "Home", "/" ], [ "Trending", "" ]]}
       />
       <main className="w-full max-w-4xl flex-1 flex">
         <LoadingWrapper>

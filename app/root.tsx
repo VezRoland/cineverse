@@ -9,7 +9,6 @@ import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
 import { Navbar } from "./components/navbar";
-import { LoadingWrapper } from "./components/loading-wrapper";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -35,11 +34,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body className="h-full min-h-screen flex flex-col">
         <Navbar />
-        <LoadingWrapper strict={false}>
-          <div className="flex-1 flex flex-col items-center gap-8 p-8">
-            {children}
-          </div>
-        </LoadingWrapper>
+        <div className="flex-1 flex flex-col items-center gap-8 p-8">
+          {children}
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>

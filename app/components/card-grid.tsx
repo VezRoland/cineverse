@@ -14,7 +14,6 @@ export const CardGrid = ({
   mediaType?: MediaType
 }) => {
 
-
   return (
     <section className="w-full grid grid-cols-[repeat(auto-fit,minmax(theme(width.44),1fr))] auto-rows-fr gap-4">
       {items.map(item => (
@@ -23,6 +22,7 @@ export const CardGrid = ({
             key={item.id} 
             id={item.id}
             title={(item as Movie).title}
+            rating={Math.round(((item as Movie).vote_average / 2) * 10) / 10}
             posterPath={(item as Movie).poster_path}
             baseUrl="/movies"
           />
@@ -31,6 +31,7 @@ export const CardGrid = ({
           <MediaCard
             key={item.id}
             id={item.id}
+            rating={Math.round(((item as TV).vote_average / 2) * 10) / 10}
             title={(item as TV).name}
             posterPath={(item as TV).poster_path}
             baseUrl="/series"

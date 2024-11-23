@@ -29,11 +29,14 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function MoviesPage() {
   const { media: { results, total_pages }, genres } = useLoaderData<typeof loader>()
 
+  console.log(results)
+
   return (
     <>
       <Header
         title="Movies"
         description="Discover new favorites from a huge selection of movies"
+        breadcrumbRoutes={[[ "Home", "/" ], [ "Movies", "" ]]}
       />
       <Separator className="max-w-4xl" />
       <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">

@@ -34,6 +34,7 @@ export default function TVShowsPage() {
       <Header
         title="TV Shows"
         description="Discover new favorites from a huge selection of TV shows"
+        breadcrumbRoutes={[[ "Home", "/" ], [ "TV Shows", "" ]]}
       />
       <Separator className="max-w-4xl" />
       <main className="w-full max-w-4xl flex-1 flex flex-col gap-8">
