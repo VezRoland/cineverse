@@ -1,15 +1,15 @@
 import { tmdb } from "~/lib/tmdb.server"
-import { useLoaderData } from "@remix-run/react"
+import { Link, useLoaderData } from "@remix-run/react"
 
 import { LoaderFunctionArgs } from "@remix-run/node"
 
-import { Icon } from "@iconify/react"
 import { Header } from "~/components/header"
 import { CardGrid } from "~/components/card-grid"
 import { Paginator } from "~/components/paginator"
 import { GenreFilter } from "~/components/genre-filter"
 import { Separator } from "~/components/ui/separator"
 import { LoadingWrapper } from "~/components/loading-wrapper"
+import { Button } from "~/components/ui/button"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url)
@@ -29,8 +29,6 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function MoviesPage() {
   const { media: { results, total_pages }, genres } = useLoaderData<typeof loader>()
 
-  console.log(results)
-
   return (
     <>
       <Header
@@ -38,19 +36,23 @@ export default function MoviesPage() {
         description="Discover new favorites from a huge selection of movies"
         breadcrumbRoutes={[[ "Home", "/" ], [ "Movies", "" ]]}
       />
-      <Separator className="max-w-4xl" />
+      <Separator />
       <main className="w-full flex-1 flex flex-col gap-8">
         <GenreFilter items={genres} />
         <LoadingWrapper>
           {results.length > 0 ? (
             <CardGrid items={results} mediaType="movie" />
           ) : (
-            <div className="relative flex-1 flex justify-center items-center gap-4">
-              <Icon
-                icon="material-symbols:sentiment-sad-rounded"
-                className="-z-10 absolute text-9xl text-muted"
-              />
-              <p>There isn&apos;t any movie to display</p>
+            <div className="relative flex-1 flex flex-col justify-center items-center">
+              <p className="text-xl">There isn&apos;t any movie to display.</p>
+              <Button
+                variant="link"
+                asChild
+              >
+                <Link to="/movies">
+                  Show all movies
+                </Link>
+              </Button>
             </div>
           )}
         </LoadingWrapper>

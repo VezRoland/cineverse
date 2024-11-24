@@ -1,15 +1,15 @@
 import { tmdb } from "~/lib/tmdb.server"
-import { useLoaderData } from "@remix-run/react"
+import { Link, useLoaderData } from "@remix-run/react"
 
 import { LoaderFunctionArgs } from "@remix-run/node"
 
-import { Icon } from "@iconify/react"
 import { Header } from "~/components/header"
 import { CardGrid } from "~/components/card-grid"
 import { Paginator } from "~/components/paginator"
 import { GenreFilter } from "~/components/genre-filter"
 import { Separator } from "~/components/ui/separator"
 import { LoadingWrapper } from "~/components/loading-wrapper"
+import { Button } from "~/components/ui/button"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url)
@@ -43,12 +43,16 @@ export default function TVShowsPage() {
           {results.length > 0 ? (
             <CardGrid items={results} mediaType="tv" />
           ) : (
-            <div className="relative flex-1 flex justify-center items-center gap-4">
-              <Icon
-                icon="material-symbols:sentiment-sad-rounded"
-                className="-z-10 absolute text-9xl text-muted"
-              />
-              <p>There isn&apos;t any TV show to display</p>
+            <div className="relative flex-1 flex flex-col justify-center items-center">
+              <p className="text-xl">There isn&apos;t any TV show to display.</p>
+              <Button
+                variant="link"
+                asChild
+              >
+                <Link to="/tv-shows">
+                  Show all TV Shows
+                </Link>
+              </Button>
             </div>
           )}
         </LoadingWrapper>

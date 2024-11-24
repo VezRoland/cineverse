@@ -9,14 +9,20 @@ export const GenreFilter = ({ items }: { items: Genre[] }) => {
   const { pathname, search } = useLocation()
   const { genres } = Object.fromEntries(new URLSearchParams(search).entries())
 
-  const currentGenres = genres?.split(",") || []
+  const currentGenres = genres?.split(",")
 
   const handleValueChange = (values: string[]) => {
-    navigate(`${pathname}?genres=${values.join(",")}`)
+    const params = new URLSearchParams(search)
+    params.delete("page")
+    if (values.join().trim() !== "") params.set("genres", values.join(","))
+    else params.delete("genres")
+  
+    navigate(`${pathname}?${params.toString()}`)
   }
 
   return (
     <ToggleGroup
+      key={JSON.stringify(currentGenres)}
       className="flex flex-wrap justify-start"
       type="multiple"
       defaultValue={currentGenres}

@@ -13,8 +13,13 @@ export const VideoCarousel = ({ videos }: { videos: Video[] }) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="z-10 left-0 -translate-x-1/2" />
-      <CarouselNext className="z-10 right-0 translate-x-1/2" />
+      {
+        videos.length > 1 &&
+        <>
+          <CarouselPrevious className="z-10 left-0 -translate-x-1/2" />
+          <CarouselNext className="z-10 right-0 translate-x-1/2" />
+        </>
+      }
     </Carousel>
   )
 }

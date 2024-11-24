@@ -39,7 +39,7 @@ export const MediaCard = ({
             ) : (
               <div className="grid place-items-center aspect-[2/3] bg-muted">
                 <Icon
-                  className="text-7xl text-muted-foreground"
+                  className="text-5xl text-muted-foreground"
                   icon="material-symbols:broken-image-rounded"
                 />
               </div>

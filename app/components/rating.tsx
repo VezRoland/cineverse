@@ -16,7 +16,7 @@ export const Rating = ({
       {[1, 2, 3, 4, 5].map(star => (
         <Icon
           key={star}
-          className="text-primary"
+          className="text-lg text-primary"
           icon={
             rating % star !== rating ? "material-symbols:star-rate-rounded" :
             star - rating >= 1 ? "material-symbols:star-rate-outline-rounded" :

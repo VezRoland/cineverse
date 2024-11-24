@@ -10,7 +10,7 @@ export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
     <section className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-semibold text-primary">Cast</h2>
-        <span className="text-sm">{cast.length} actors</span>
+        <span className="text-sm">{cast.length} actor{cast.length > 1 ? "s" : ""}</span>
       </div>
       <Carousel
         className="
@@ -27,7 +27,7 @@ export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
           {cast.map(actor => (
             <CarouselItem
               key={actor.id}
-              className="flex flex-col basis-1/4 md:basis-1/6 items-center gap-2"
+              className="flex flex-col basis-1/4 md:basis-1/6 items-center gap-2 mx-auto"
             >
               {
                 actor.profile_path ? (
@@ -38,7 +38,7 @@ export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
                   />
                 ) : (
                   <div className="w-full h-max aspect-square grid place-items-center rounded-full bg-muted">
-                    <Icon className="text-4xl text-muted-foreground" icon="material-symbols:broken-image-rounded" />
+                    <Icon className="text-5xl text-muted-foreground" icon="material-symbols:person-rounded" />
                   </div>
                 )
               }
@@ -46,8 +46,13 @@ export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="z-10 left-0 -translate-x-1/2" />
-        <CarouselNext className="z-10 right-0 translate-x-1/2" />
+        {
+          cast.length > 1 &&
+          <>
+            <CarouselPrevious className="z-10 left-0 -translate-x-1/2" />
+            <CarouselNext className="z-10 right-0 translate-x-1/2" />
+          </>
+        }
       </Carousel>
     </section>
   )

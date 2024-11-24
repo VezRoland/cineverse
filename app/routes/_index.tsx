@@ -1,6 +1,6 @@
 import type { MetaFunction } from "@remix-run/node"
-import { Link } from "@remix-run/react"
 import { Logo } from "~/components/logo"
+import { PageCard } from "~/components/page-card"
 import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card"
 
 export const meta: MetaFunction = () => {
@@ -28,45 +28,22 @@ export default function Index() {
         </Card>
       </header>
       <main className="w-full grid md:grid-cols-2 flex-1 gap-8">
-        <Link
+        <PageCard
           className="md:col-span-2"
-          to="/trending"
-        >
-          <Card className="h-full grid place-items-center text-center">
-            <CardHeader>
-              <CardTitle>
-                <h2 className="py-2 m-auto text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Trending Movies & TV Shows</h2>
-              </CardTitle>
-              <CardDescription>
-                <p className="max-w-96 m-auto text-primary-foreground">Are you curious about today&apos;s trends? Search through a vast selection of trending movies and TV series streamed all over the world on this day.</p>
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-        <Link to="/movies">
-          <Card className="h-full grid place-items-center text-center">
-            <CardHeader>
-              <CardTitle>
-                <h2 className="py-2 m-auto text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Discover Movies</h2>
-              </CardTitle>
-              <CardDescription>
-                <p className="max-w-96 m-auto text-primary-foreground">Craving to find new movies? Pick your favorites from a big selection of movies.</p>
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
-        <Link to="/tv-shows">
-          <Card className="h-full grid place-items-center text-center">
-            <CardHeader>
-              <CardTitle>
-                <h2 className="py-2 m-auto text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Discover TV Shows</h2>
-              </CardTitle>
-              <CardDescription>
-                <p className="max-w-96 m-auto text-primary-foreground">Binged through all of your TV Shows? Find new binge-worthy TV Shows from hundreds of series.</p>
-              </CardDescription>
-            </CardHeader>
-          </Card>
-        </Link>
+          title="Trending Movies & TV Shows"
+          description="Are you curious about today&apos;s trends? Search through a vast selection of trending movies and TV series streamed all over the world on this day."
+          href="/trending"
+        />
+        <PageCard
+          title="Discover Movies"
+          description="Craving to find new movies? Pick your favorites from a big selection of movies."
+          href="/movies"
+        />
+        <PageCard
+          title="Discover TV Shows"
+          description="Binged through all of your TV Shows? Find new binge-worthy TV Shows from hundreds of series."
+          href="/tv-shows"
+        />
       </main>
     </>
   )
