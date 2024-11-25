@@ -1,24 +1,26 @@
-import clsx from "clsx"
-import { Loader2 } from "lucide-react"
-import { useState } from "react"
+import clsx from 'clsx';
+import { Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 export const YTVideo = ({
   src,
-  className = ""
+  className = '',
 }: {
-  src: string,
-  className?: string
+  src: string;
+  className?: string;
 }) => {
-  const [ isLoading, setIsLoading ] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <div
       className={clsx(
-        "relative w-full h-full aspect-video grid place-items-center bg-black rounded-lg overflow-clip",
+        'relative w-full h-full aspect-video grid place-items-center bg-black rounded-lg overflow-clip',
         className
       )}
     >
-      { isLoading && <Loader2 className="absolute animate-spin" size="72px" /> }
+      {isLoading && (
+        <Loader2 className="absolute animate-spin" size="72px" />
+      )}
       <iframe
         className="w-full h-full"
         src={src}
@@ -29,5 +31,5 @@ export const YTVideo = ({
         onLoad={() => setIsLoading(false)}
       />
     </div>
-  )
-}
+  );
+};

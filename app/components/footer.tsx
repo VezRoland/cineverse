@@ -1,5 +1,5 @@
-import { Icon } from "@iconify/react"
-import { Button } from "./ui/button"
+import { Icon } from '@iconify/react';
+import { Button } from './ui/button';
 
 export const Footer = () => {
   return (
@@ -8,6 +8,7 @@ export const Footer = () => {
         <Button
           className="text-xl"
           variant="ghost"
+          size="icon"
           asChild
         >
           <a href="https://github.com/VezRoland/cineverse">
@@ -18,22 +19,18 @@ export const Footer = () => {
       <p>Made by Roland Vezsenyi</p>
       <ul className="flex justify-end flex-1">
         <li>
-          <Button
-            variant="link"
-            asChild
-          >
-            <a href="https://www.themoviedb.org/">The Movie Database</a>
+          <Button variant="link" asChild>
+            <a href="https://www.themoviedb.org/">
+              The Movie Database
+            </a>
           </Button>
         </li>
         <li>
-          <Button
-            variant="link"
-            asChild
-          >
+          <Button variant="link" asChild>
             <a href="https://logoipsum.com/">Logoipsum</a>
           </Button>
         </li>
       </ul>
     </footer>
-  )
-}
+  );
+};

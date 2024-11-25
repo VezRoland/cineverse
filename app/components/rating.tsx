@@ -1,29 +1,28 @@
-import { Icon } from "@iconify/react"
-import clsx from "clsx"
+import { Icon } from '@iconify/react';
+import clsx from 'clsx';
 
 export const Rating = ({
   rating,
-  className = ""
+  className = '',
 }: {
-  rating: number,
-  className?: string
+  rating: number;
+  className?: string;
 }) => {
   return (
-    <div className={clsx(
-      "flex",
-      className
-    )}>
-      {[1, 2, 3, 4, 5].map(star => (
+    <div className={clsx('flex', className)}>
+      {[1, 2, 3, 4, 5].map((star) => (
         <Icon
           key={star}
           className="text-lg text-primary"
           icon={
-            rating % star !== rating ? "material-symbols:star-rate-rounded" :
-            star - rating >= 1 ? "material-symbols:star-rate-outline-rounded" :
-            "material-symbols:star-rate-half-rounded"
+            rating % star !== rating
+              ? 'material-symbols:star-rate-rounded'
+              : star - rating >= 1
+              ? 'material-symbols:star-rate-outline-rounded'
+              : 'material-symbols:star-rate-half-rounded'
           }
         />
       ))}
     </div>
-  )
-}
+  );
+};

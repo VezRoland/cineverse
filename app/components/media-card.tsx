@@ -1,27 +1,29 @@
-import { Link } from "@remix-run/react"
+import { Link } from '@remix-run/react';
 
-import { Icon } from "@iconify/react"
-import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card"
-import { Rating } from "./rating"
+import { Icon } from '@iconify/react';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
+import { Rating } from './rating';
 
 export const MediaCard = ({
   id,
   title,
   rating,
   posterPath,
-  baseUrl
+  baseUrl,
 }: {
-  id: number,
-  title: string,
-  rating: number,
-  posterPath: string,
-  baseUrl: string
+  id: number;
+  title: string;
+  rating: number;
+  posterPath: string;
+  baseUrl: string;
 }) => {
   return (
-    <Link
-      className="w-full flex group"
-      to={`${baseUrl}/${id}`}
-    >    
+    <Link className="w-full flex group" to={`${baseUrl}/${id}`}>
       <Card
         className="w-full flex flex-col overflow-clip shadow-2xl shadow-transparent
           group-focus:shadow-2xl group-focus:shadow-accent/50
@@ -29,27 +31,23 @@ export const MediaCard = ({
           transition-[box-shadow] duration-300"
       >
         <CardHeader className="p-0 border-b border-border">
-          {
-            posterPath ? (
-              <img
-                className="aspect-[2/3]"
-                src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
-                alt={`Poster of ${title}`}
+          {posterPath ? (
+            <img
+              className="aspect-[2/3]"
+              src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+              alt={`Poster of ${title}`}
+            />
+          ) : (
+            <div className="grid place-items-center aspect-[2/3] bg-muted">
+              <Icon
+                className="text-5xl text-muted-foreground"
+                icon="material-symbols:broken-image-rounded"
               />
-            ) : (
-              <div className="grid place-items-center aspect-[2/3] bg-muted">
-                <Icon
-                  className="text-5xl text-muted-foreground"
-                  icon="material-symbols:broken-image-rounded"
-                />
-              </div>
-            )
-          }
+            </div>
+          )}
         </CardHeader>
         <CardContent className="flex-1 flex flex-col justify-between items-center gap-2 p-6 text-center">
-          <CardTitle>
-            {title}
-          </CardTitle>
+          <CardTitle>{title}</CardTitle>
           <div className="flex flex-wrap justify-center items-center gap-2">
             <span className="text-sm">{rating} / 5</span>
             <Rating className="text-xl" rating={rating} />
@@ -57,5 +55,5 @@ export const MediaCard = ({
         </CardContent>
       </Card>
     </Link>
-  )
-}
+  );
+};

@@ -1,16 +1,24 @@
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from 'embla-carousel-autoplay';
 
-import { Cast } from "tmdb-ts"
+import { Cast } from 'tmdb-ts';
 
-import { Icon } from "@iconify/react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "~/components/ui/carousel"
+import { Icon } from '@iconify/react';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '~/components/ui/carousel';
 
 export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
   return (
     <section className="flex flex-col gap-4">
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-semibold text-primary">Cast</h2>
-        <span className="text-sm">{cast.length} actor{cast.length > 1 ? "s" : ""}</span>
+        <span className="text-sm">
+          {cast.length} actor{cast.length > 1 ? 's' : ''}
+        </span>
       </div>
       <Carousel
         className="
@@ -19,41 +27,43 @@ export const CastCarousel = ({ cast }: { cast: Cast[] }) => {
           "
         plugins={[
           Autoplay({
-            delay: 2000
-          })
+            delay: 2000,
+          }),
         ]}
       >
         <CarouselContent>
-          {cast.map(actor => (
+          {cast.map((actor) => (
             <CarouselItem
               key={actor.id}
               className="flex flex-col basis-1/4 md:basis-1/6 items-center gap-2 mx-auto"
             >
-              {
-                actor.profile_path ? (
-                  <img
-                    className="w-full h-max aspect-square object-cover rounded-full"
-                    src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`} 
-                    alt={`${actor.name}`}
+              {actor.profile_path ? (
+                <img
+                  className="w-full h-max aspect-square object-cover rounded-full"
+                  src={`https://image.tmdb.org/t/p/w500/${actor.profile_path}`}
+                  alt={`${actor.name}`}
+                />
+              ) : (
+                <div className="w-full h-max aspect-square grid place-items-center rounded-full bg-muted">
+                  <Icon
+                    className="text-5xl text-muted-foreground"
+                    icon="material-symbols:person-rounded"
                   />
-                ) : (
-                  <div className="w-full h-max aspect-square grid place-items-center rounded-full bg-muted">
-                    <Icon className="text-5xl text-muted-foreground" icon="material-symbols:person-rounded" />
-                  </div>
-                )
-              }
-              <span className="text-center font-semibold">{actor.name}</span>
+                </div>
+              )}
+              <span className="text-center font-semibold">
+                {actor.name}
+              </span>
             </CarouselItem>
           ))}
         </CarouselContent>
-        {
-          cast.length > 1 &&
+        {cast.length > 1 && (
           <>
             <CarouselPrevious className="z-10 left-0 -translate-x-1/2" />
             <CarouselNext className="z-10 right-0 translate-x-1/2" />
           </>
-        }
+        )}
       </Carousel>
     </section>
-  )
-}
+  );
+};

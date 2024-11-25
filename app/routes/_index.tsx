@@ -1,14 +1,19 @@
-import type { MetaFunction } from "@remix-run/node"
-import { Logo } from "~/components/logo"
-import { PageCard } from "~/components/page-card"
-import { Card, CardDescription, CardHeader, CardTitle } from "~/components/ui/card"
+import type { MetaFunction } from '@remix-run/node';
+import { Logo } from '~/components/logo';
+import { PageCard } from '~/components/page-card';
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '~/components/ui/card';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "Cineverse" },
-    { name: "description", content: "Welcome to Cineverse!" },
-  ]
-}
+    { title: 'Cineverse' },
+    { name: 'description', content: 'Welcome to Cineverse!' },
+  ];
+};
 
 export default function Index() {
   return (
@@ -21,7 +26,11 @@ export default function Index() {
               <h1 className="text-6xl font-bold">Cineverse</h1>
             </CardTitle>
             <CardDescription>
-              <p className="max-w-80 text-center">A collection of TMDB movies and TV shows made into a simplistic web application.<br/></p>
+              <p className="max-w-80 text-center">
+                A collection of TMDB movies and TV shows made into a
+                simplistic web application.
+                <br />
+              </p>
             </CardDescription>
           </CardHeader>
           <div className="-z-10 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[85%] aspect-square rounded-full blur-3xl bg-gradient-to-r from-primary to-accent"></div>
@@ -31,7 +40,7 @@ export default function Index() {
         <PageCard
           className="md:col-span-2"
           title="Trending Movies & TV Shows"
-          description="Are you curious about today&apos;s trends? Search through a vast selection of trending movies and TV series streamed all over the world on this day."
+          description="Are you curious about today's trends? Search through a vast selection of trending movies and TV series streamed all over the world on this day."
           href="/trending"
         />
         <PageCard
@@ -46,5 +55,5 @@ export default function Index() {
         />
       </main>
     </>
-  )
+  );
 }
