@@ -1,7 +1,7 @@
 import { tmdb } from '~/lib/tmdb.server';
 import { Link, useLoaderData } from '@remix-run/react';
 
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { Season } from 'tmdb-ts';
 
 import { Icon } from '@iconify/react';
@@ -46,6 +46,13 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   } catch {
     return null;
   }
+};
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  return [
+    { title: `${data ? data.name : "TV show can't be found"} | Cineverse` },
+    { name: 'description', content: data ? `Find out more about ${data && data.name}.` : "" },
+  ];
 };
 
 export default function TVShowPage() {

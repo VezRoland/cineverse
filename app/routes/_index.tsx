@@ -10,7 +10,7 @@ import {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Cineverse' },
+    { title: 'Home | Cineverse' },
     { name: 'description', content: 'Welcome to Cineverse!' },
   ];
 };

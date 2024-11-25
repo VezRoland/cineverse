@@ -2,7 +2,7 @@ import { getMovies, tmdb } from '~/lib/tmdb.server';
 import { Link, redirect, useLoaderData } from '@remix-run/react';
 import { TMDB_MIN_PAGE_AMOUNT } from '~/lib/tmdb.config';
 
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 
 import { Header } from '~/components/header';
 import { CardGrid } from '~/components/card-grid';
@@ -11,6 +11,13 @@ import { GenreFilter } from '~/components/genre-filter';
 import { Separator } from '~/components/ui/separator';
 import { LoadingWrapper } from '~/components/loading-wrapper';
 import { Button } from '~/components/ui/button';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Movies | Cineverse' },
+    { name: 'description', content: 'Find your personal favorites from a vast selection of movies.' },
+  ];
+};
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url);

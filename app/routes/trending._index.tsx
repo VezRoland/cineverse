@@ -3,13 +3,20 @@ import { Link, redirect, useLoaderData } from '@remix-run/react';
 import { TMDB_MIN_PAGE_AMOUNT } from '~/lib/tmdb.config';
 import { TRENDING_PAGE_BASE_URL } from '~/lib/pages.config';
 
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 
 import { Header } from '~/components/header';
 import { CardGrid } from '~/components/card-grid';
 import { Paginator } from '~/components/paginator';
 import { LoadingWrapper } from '~/components/loading-wrapper';
 import { Button } from '~/components/ui/button';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Trending | Cineverse' },
+    { name: 'description', content: 'Take a look at today\'s trending movies and TV shows.' },
+  ];
+};
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url);

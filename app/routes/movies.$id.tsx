@@ -2,7 +2,7 @@ import { tmdb } from '~/lib/tmdb.server';
 import { Link, useLoaderData } from '@remix-run/react';
 import { formatTime } from '~/lib/utils';
 
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 
 import { Icon } from '@iconify/react';
 import { Header } from '~/components/header';
@@ -32,6 +32,13 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   } catch {
     return null;
   }
+};
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  return [
+    { title: `${data ? data.title : "Movie can't be found"} | Cineverse` },
+    { name: 'description', content: data ? `Find out more about ${data && data.title}.` : "" },
+  ];
 };
 
 export default function MoviePage() {

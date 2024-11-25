@@ -7,7 +7,7 @@ import {
 } from '@remix-run/react';
 import { TMDB_MIN_PAGE_AMOUNT } from '~/lib/tmdb.config';
 
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node';
 import { FormEvent } from 'react';
 
 import { Icon } from '@iconify/react';
@@ -17,6 +17,13 @@ import { Button } from '~/components/ui/button';
 import { LoadingWrapper } from '~/components/loading-wrapper';
 import { CardGrid } from '~/components/card-grid';
 import { Paginator } from '~/components/paginator';
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: 'Search | Cineverse' },
+    { name: 'description', content: 'Search for favorites from a huge collection of movies and TV shows.' },
+  ];
+};
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { searchParams } = new URL(request.url);
