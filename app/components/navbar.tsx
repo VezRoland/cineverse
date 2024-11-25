@@ -1,4 +1,4 @@
-import { Link, useLocation } from '@remix-run/react';
+import { Link, useLocation, useNavigation } from '@remix-run/react';
 import clsx from 'clsx';
 
 import { Icon } from '@iconify/react';
@@ -11,6 +11,7 @@ import {
 import { Button } from '~/components/ui/button';
 import { Logo } from '~/components/logo';
 import { LoadBar } from '~/components/load-bar';
+import { useEffect, useState } from 'react';
 
 const pages = [
   {
@@ -42,11 +43,18 @@ const pages = [
 
 export const Navbar = () => {
   const { pathname } = useLocation();
+  const navigation = useNavigation();
+
+  const [ isSheetOpen, setSheetOpen ] = useState(false);
+
+  useEffect(() => {
+    if (navigation.state === "idle" && !navigation.location) return setSheetOpen(false)
+  }, [navigation])
 
   return (
     <nav className="z-50 sticky top-0 max-w-full h-16 flex items-center px-8 border-b border-border bg-background/75 backdrop-blur-lg">
       <div className="relative w-1/4">
-        <Sheet key={crypto.randomUUID()}>
+        <Sheet open={isSheetOpen} onOpenChange={setSheetOpen}>
           <SheetTrigger className="block md:hidden">
             <Icon
               className="text-2xl"
