@@ -46,7 +46,7 @@ export const Navbar = () => {
   return (
     <nav className="z-50 sticky top-0 max-w-full h-16 flex items-center px-8 border-b border-border bg-background/75 backdrop-blur-lg">
       <div className="relative w-1/4">
-        <Sheet>
+        <Sheet key={crypto.randomUUID()}>
           <SheetTrigger className="block md:hidden">
             <Icon
               className="text-2xl"
