@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@remix-run/react';
 import clsx from 'clsx';
 
 import {
@@ -30,8 +31,10 @@ export const Header = ({
               <React.Fragment key={name}>
                 <BreadcrumbItem>
                   {index < breadcrumbRoutes.length - 1 ? (
-                    <BreadcrumbLink href={path}>
-                      {name}
+                    <BreadcrumbLink asChild>
+                      <Link to={path}>
+                        {name}
+                      </Link>
                     </BreadcrumbLink>
                   ) : (
                     <BreadcrumbPage>

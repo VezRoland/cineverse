@@ -64,15 +64,20 @@ export default function MoviePage() {
       />
       <main className="w-full flex-1 flex flex-col gap-8">
         <Card className="relative bg-transparent bg-gradient-to-b from-background to-transparent">
-          <CardHeader className="flex-row justify-between items-center space-y-0">
+          <CardHeader className="flex-row flex-wrap justify-between items-center gap-4 space-y-0">
             <CardTitle>
               <h2 className="text-2xl font-semibold text-primary">
                 About this movie
               </h2>
             </CardTitle>
-            <ul className="flex gap-2">
+            <ul className="flex flex-wrap gap-2 overflow-auto">
               {movie.genres.map((genre) => (
-                <Button key={genre.id} variant="outline" asChild>
+                <Button
+                  key={genre.id}
+                  className="flex-1"
+                  variant="outline"
+                  asChild
+                >
                   <Link
                     className="text-xs"
                     to={`/movies?genres=${genre.id}`}
