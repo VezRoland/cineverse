@@ -37,7 +37,6 @@ export default function MoviePage() {
 
   const rating = Math.round((movie.vote_average / 2) * 10) / 10
   const trailers = movie.videos.results.filter(video => video.type === "Trailer")
-  console.log(movie.genres)
 
   return (
     <>

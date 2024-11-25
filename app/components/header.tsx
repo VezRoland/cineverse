@@ -1,3 +1,4 @@
+import React from "react"
 import clsx from "clsx"
 
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "~/components/ui/breadcrumb"
@@ -23,8 +24,8 @@ export const Header = ({
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumbRoutes.map(([ name, path ], index) => (
-              <>
-                <BreadcrumbItem key={name}>
+              <React.Fragment key={name}>
+                <BreadcrumbItem>
                   {
                     index < breadcrumbRoutes.length - 1 ? (
                       <BreadcrumbLink href={path}>
@@ -38,7 +39,7 @@ export const Header = ({
                   }
                 </BreadcrumbItem>
                 { index < breadcrumbRoutes.length - 1 && <BreadcrumbSeparator /> }
-              </>
+              </React.Fragment>
             ))}
           </BreadcrumbList>
         </Breadcrumb>

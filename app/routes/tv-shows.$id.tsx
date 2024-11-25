@@ -56,8 +56,6 @@ export default function TVShowPage() {
   } = tvShow
   const rating = Math.round((vote_average / 2) * 10) / 10
   const trailers = videos.results.filter(video => video.type === "Trailer")
-  
-  console.log(tvShow)
 
   return (
     <>
