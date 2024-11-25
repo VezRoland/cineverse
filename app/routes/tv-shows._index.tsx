@@ -43,7 +43,7 @@ export default function TVShowsPage() {
           {results.length > 0 ? (
             <CardGrid items={results} mediaType="tv" />
           ) : (
-            <div className="relative flex-1 flex flex-col justify-center items-center">
+            <div className="flex-1 flex flex-col justify-center items-center">
               <p className="text-xl">There isn&apos;t any TV show to display.</p>
               <Button
                 variant="link"

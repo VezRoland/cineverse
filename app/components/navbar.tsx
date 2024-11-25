@@ -12,6 +12,7 @@ const pages = [
   { name: "Trending", icon: <Icon icon="material-symbols:trending-up-rounded" />, path: "/trending" },
   { name: "Movies", icon: <Icon icon="material-symbols:movie-rounded" />, path: "/movies" },
   { name: "TV Shows", icon: <Icon icon="material-symbols:tv-gen-rounded" />, path: "/tv-shows" },
+  { name: "Search", icon: <Icon icon="material-symbols:search-rounded" />, path: "/search" }
 ]
 
 export const Navbar = () => {
@@ -28,7 +29,7 @@ export const Navbar = () => {
             <SheetHeader>
               <Logo />
             </SheetHeader>
-            <ul className="flex flex-col gap-2 py-8">
+            <ul className="flex flex-col py-8">
               {pages.map(page => (
                 <li key={page.name}>
                   <Button
