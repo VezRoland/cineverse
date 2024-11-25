@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { ErrorResponse, TMDB } from 'tmdb-ts';
 import {
   MOVIES_PAGE_BASE_URL,
