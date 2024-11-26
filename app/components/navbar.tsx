@@ -12,6 +12,7 @@ import { Button } from '~/components/ui/button';
 import { Logo } from '~/components/logo';
 import { LoadBar } from '~/components/load-bar';
 import { useEffect, useState } from 'react';
+import { ThemeToggle } from './theme-toggle';
 
 const pages = [
   {
@@ -115,7 +116,9 @@ export const Navbar = () => {
           </li>
         ))}
       </ul>
-      <div className="w-1/4"></div>
+      <div className="w-1/4 flex justify-end">
+        <ThemeToggle />
+      </div>
       <div className="absolute left-0 bottom-0 w-full">
         <LoadBar />
       </div>

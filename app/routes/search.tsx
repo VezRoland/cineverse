@@ -70,21 +70,19 @@ export default function SearchPage() {
           ['Search', ''],
         ]}
       />
-      <nav className="w-full">
-        <form className="flex gap-2" onSubmit={handleSubmit}>
-          <Input
-            key={query}
-            className="flex-1"
-            type="search"
-            name="query"
-            placeholder="Type in the title of a movie or TV show"
-            defaultValue={query || ''}
-          />
-          <Button size="icon">
-            <Icon icon="material-symbols:search-rounded" />
-          </Button>
-        </form>
-      </nav>
+      <form className="w-full flex gap-2" onSubmit={handleSubmit}>
+        <Input
+          key={query}
+          className="flex-1"
+          type="search"
+          name="query"
+          placeholder="Type in the title of a movie or TV show"
+          defaultValue={query || ''}
+        />
+        <Button size="icon">
+          <Icon icon="material-symbols:search-rounded" />
+        </Button>
+      </form>
       <main className="w-full flex-1 flex flex-col">
         <LoadingWrapper>
           {results.length > 0 ? (

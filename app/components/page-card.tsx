@@ -34,7 +34,7 @@ export const PageCard = ({
             </h2>
           </CardTitle>
           <CardDescription>
-            <p className="max-w-96 m-auto text-primary-foreground">
+            <p className="max-w-96 m-auto text-foreground">
               {description}
             </p>
           </CardDescription>
