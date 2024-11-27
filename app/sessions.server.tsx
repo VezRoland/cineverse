@@ -1,4 +1,4 @@
-
+import "dotenv/config"
 import { createCookieSessionStorage } from '@remix-run/node';
 import { createThemeSessionResolver } from 'remix-themes';
 
@@ -10,10 +10,8 @@ const sessionStorage = createCookieSessionStorage({
     path: '/',
     httpOnly: true,
     sameSite: 'lax',
-    secrets: ['s3cr3t'],
-    ...(isProduction
-      ? { domain: 'cineverse-project.netlify.app', secure: true }
-      : {}),
+    secrets: [process.env.SESSION_SECRET!],
+    secure: isProduction
   },
 });
 
